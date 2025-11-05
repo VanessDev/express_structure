@@ -44,10 +44,23 @@ res.status(404).json({
 exports.createProduct =(req, res) =>{
     const {name,price} = req.body;
     console.log(name,price);
+//Si on ne trouve pas de nom et si price est different de number (s'il n'estr pas un nombre)
+    if(!name ||!price || typeof price !=='number'){
+        res.status(400).json ({
+            success: false,
+            message: 'name string et price int obligatoire',
+            data:null
+        });
+    };
+    //création d'un objet produit avec id autoincrement
+     const newProduct = {id: productID++,name,price};
+     products.push(newProduct);
+     //201: indique que la requête a reussi 
+     res.status(201).json ({
+        success:false,
+        message:"produit crée",
+        data: newProduct
+     });
     
-}
+};
 
-// exports.test = (req, res) =>{
-//     console.log('route test de mon controller product');
-//     res.send('route test de mon controller product');
-// }

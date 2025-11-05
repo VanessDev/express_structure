@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const router = require("./routes");
+const notFound = require('./middlewares/notFound')
 
 // crée l'application express AVANT d'utiliser app
 const app = express();
@@ -19,6 +20,9 @@ app.use(cors());
 
 //cherher toutes les routes (sous la route/monapi)
 app.use('/monapi',router);
+
+//Je recupere la request qui n'a pas trouvé de route
+app.use(notFound);
 
 
 // export de l'app pour que server.js puisse l'utiliser
