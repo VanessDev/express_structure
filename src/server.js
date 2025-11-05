@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 // vérifie que le port existe
 if (!PORT) {
   console.log("PORT absent, veuillez compléter le fichier .env");
+  //stoppe le programme de lancement de node
   process.exit(1);
 }
 
