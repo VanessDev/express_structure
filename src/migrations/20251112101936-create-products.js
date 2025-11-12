@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2), // nombre de chiffre avant la virgule, nombre apre's la virgule
         allowNull: false,
       },
-      create_at: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),

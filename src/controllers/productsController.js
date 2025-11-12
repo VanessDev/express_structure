@@ -1,5 +1,5 @@
 const db = require('../models');
-const product = db.Product;
+const Product = db.Product;
 
 //ici le controller pour mon crud products
 let productID = 3;
@@ -67,7 +67,27 @@ exports.createProduct =(req, res) =>{
     
 };
 
-exports.test = (req,res) => {
-    console.log('hello');
-    res.send('helloyoupie');
+exports.test = async (req,res) => {
+
+   try {
+    //vérifier la connexion
+    await db.sequelize.authenticate();
+
+    //vérifier que le model fonctionne
+    const products = await Product.findAll({limit:1});
+
+    res.status(200).json({
+   success:true,
+     message:'test',
+     data:products
+    })
+   }catch(error){
+    console.error('error dans le test de product',error);
+    res.status(500).json({
+        success:false,
+        message:'echec lors de test de product',
+        error: error.message
+    })
+  
+   }
 }

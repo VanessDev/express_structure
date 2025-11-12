@@ -5,6 +5,7 @@ const productsController = require('../controllers/productsController');
 const router = Router();
 
 //Définir les endpoints
+router.get('/test', productsController.test)
 router.get('/', productsController.listProducts)
 router.get('/:id',productsController.getProductById);
 router.post('/', productsController.createProduct);
