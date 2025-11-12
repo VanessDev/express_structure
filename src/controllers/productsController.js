@@ -1,3 +1,6 @@
+const db = require('../models');
+const product = db.Product;
+
 //ici le controller pour mon crud products
 let productID = 3;
 const products = [
@@ -64,3 +67,7 @@ exports.createProduct =(req, res) =>{
     
 };
 
+exports.test = (req,res) => {
+    console.log('hello');
+    res.send('helloyoupie');
+}

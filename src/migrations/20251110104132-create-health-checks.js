@@ -1,14 +1,16 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-
-  await queryInterface.createTable('health_checks', {
-    id: {type: Sequelize.INTEGER, autoIncrement:true, primaryKey: true},
-    createdAt: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.fn ('NOW')}
-
-  })
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable("health_checks", {
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+    });
     /**
      * Add altering commands here.
      *
@@ -17,14 +19,13 @@ module.exports = {
      */
   },
 
-  async down (queryInterface, Sequelize) {
-
-    await queryInterface.dropTable('health_checks');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable("health_checks");
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-  }
+  },
 };
